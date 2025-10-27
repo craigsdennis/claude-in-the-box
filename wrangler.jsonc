@@ -7,16 +7,39 @@
 	"name": "claude-in-the-box",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-10-22",
-	"compatibility_flags": [
-		"global_fetch_strictly_public"
-	],
+	"compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
 		"directory": "./public"
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"containers": [
+		{
+			"class_name": "Sandbox",
+			"image": "./Dockerfile",
+			"instance_type": "basic"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "Sandbox",
+				"name": "Sandbox"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"new_sqlite_classes": ["Sandbox"],
+			"tag": "v1"
+		}
+	],
+	"kv_namespaces": [{
+		"binding": "RESULTS"
+	}]
+
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

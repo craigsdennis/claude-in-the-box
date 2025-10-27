@@ -3,30 +3,48 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hello, World!</title>
+		<title>Tutorial Checker</title>
+		<link rel="stylesheet" href="/styles.css" />
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	</head>
 	<body>
-		<h1 id="heading"></h1>
-		<p>This page comes from a static asset stored at `public/index.html` as configured in `wrangler.jsonc`.</p>
-		<button id="button" type="button">Fetch a random UUID</button>
-		<output id="random" for="button"></output>
-		<script>
-			fetch('/message')
-				.then((resp) => resp.text())
-				.then((text) => {
-					const h1 = document.getElementById('heading');
-					h1.textContent = text;
-				});
+		<h1>Tutorial Checker</h1>
+		<p class="subtitle">Submit a tutorial URL to check it using Claude in a Sandbox</p>
 
-			const button = document.getElementById("button");
-			button.addEventListener("click", () => {
-				fetch('/random')
-					.then((resp) => resp.text())
-					.then((text) => {
-						const random = document.getElementById('random');
-						random.textContent = text;
-					});
-			});
-		</script>
+		<div id="resultsSection" class="results-section" style="display: none;">
+			<h2>Recent Results</h2>
+			<div class="results-content">
+				<div class="result-item">
+					<h3>Fetched Content</h3>
+					<div id="fetchedContent" class="markdown-content"></div>
+				</div>
+				<div class="result-item">
+					<h3>Review</h3>
+					<div id="reviewContent" class="markdown-content"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-container">
+			<form id="tutorialForm">
+				<label for="tutorialUrl">Tutorial URL</label>
+				<input
+					type="url"
+					id="tutorialUrl"
+					name="tutorialUrl"
+					placeholder="https://example.com/tutorial"
+					required
+				/>
+				<button type="submit" id="submitBtn">Check Tutorial</button>
+			</form>
+		</div>
+
+		<div class="output-container" id="outputContainer">
+			<h2>Processing<span class="loading" id="loadingIndicator"></span></h2>
+			<div id="output"></div>
+			<div id="error" class="error" style="display: none;"></div>
+		</div>
+
+		<script src="/app.js"></script>
 	</body>
 </html>
