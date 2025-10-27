@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Tutorial Checker</title>
+		<title>Claude in the Box: Tutorial Checker</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
 		<link rel="stylesheet" href="/styles.css" />
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	</head>
@@ -14,14 +15,14 @@
 		<div id="resultsSection" class="results-section" style="display: none;">
 			<h2>Recent Results</h2>
 			<div class="results-content">
-				<div class="result-item">
-					<h3>Fetched Content</h3>
+				<details class="result-item">
+					<summary>Fetched Content</summary>
 					<div id="fetchedContent" class="markdown-content"></div>
-				</div>
-				<div class="result-item">
-					<h3>Review</h3>
+				</details>
+				<details class="result-item">
+					<summary>Review</summary>
 					<div id="reviewContent" class="markdown-content"></div>
-				</div>
+				</details>
 			</div>
 		</div>
 
@@ -45,6 +46,13 @@
 			<div id="error" class="error" style="display: none;"></div>
 		</div>
 
-		<script src="/app.js"></script>
+		<footer class="sticky-footer">
+		<div class="footer-content">
+			<p>Built with 🧡 using <a href="https://sandbox.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Sandbox</a> && <a href="https://docs.claude.com/en/api/agent-sdk/overview" target="_blank" rel="noopener noreferrer">Anthropic Claude Agent SDK</a></p>
+			<p><a href="https://github.com/craigsdennis/claude-in-the-box" target="_blank" rel="noopener noreferrer">👀 the code</a></p>
+		</div>
+	</footer>
+
+	<script src="/app.js"></script>
 	</body>
 </html>

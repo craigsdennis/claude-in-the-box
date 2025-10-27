@@ -8,8 +8,10 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 	max-width: 800px;
 	margin: 0 auto;
-	padding: 40px 20px;
+	padding: 40px 20px 100px;
 	background: #f5f5f5;
+	min-height: 100vh;
+	position: relative;
 }
 
 h1 {
@@ -151,12 +153,41 @@ h2 {
 	background: #f8f8f8;
 }
 
-.result-item h3 {
+.result-item summary {
 	color: #4a90e2;
-	margin-bottom: 16px;
 	font-size: 18px;
-	border-bottom: 2px solid #4a90e2;
+	font-weight: 600;
+	cursor: pointer;
+	list-style: none;
 	padding-bottom: 8px;
+	border-bottom: 2px solid #4a90e2;
+	user-select: none;
+	transition: opacity 0.2s;
+	position: relative;
+	padding-left: 24px;
+}
+
+.result-item summary:hover {
+	opacity: 0.7;
+}
+
+.result-item summary::before {
+	content: '▶';
+	position: absolute;
+	left: 0;
+	transition: transform 0.2s;
+}
+
+.result-item[open] summary::before {
+	transform: rotate(90deg);
+}
+
+.result-item summary::-webkit-details-marker {
+	display: none;
+}
+
+.result-item .markdown-content {
+	margin-top: 16px;
 }
 
 .markdown-content {
@@ -263,4 +294,39 @@ h2 {
 .markdown-content img {
 	max-width: 100%;
 	height: auto;
+}
+
+.sticky-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+	padding: 16px 20px;
+	text-align: center;
+	box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+	z-index: 1000;
+}
+
+.footer-content {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.footer-content p {
+	margin: 4px 0;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.sticky-footer a {
+	color: #fff;
+	text-decoration: underline;
+	font-weight: 500;
+	transition: opacity 0.2s;
+}
+
+.sticky-footer a:hover {
+	opacity: 0.8;
 }
