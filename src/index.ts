@@ -20,7 +20,6 @@ app.get('/api/results', async(c) => {
 app.post('/api/tutorial/stream', async (c) => {
 	const { tutorialUrl } = await c.req.json();
 	console.log(`Checking tutorial: ${tutorialUrl}`);
-	c.header('Content-Encoding', 'Identity');
 	const VERBOSE = false;
 	const REPO_URL = 'https://github.com/craigsdennis/skill-tutorial-checker-anthropic';
 	// You could share this and let other processes connect
@@ -32,6 +31,10 @@ app.post('/api/tutorial/stream', async (c) => {
 		CLOUDFLARE_ACCOUNT_ID: c.env.CLOUDFLARE_ACCOUNT_ID,
 		CLOUDFLARE_API_TOKEN: c.env.CLOUDFLARE_API_TOKEN,
 	});
+	// Help streaming in local dev
+	c.header('Content-Encoding', 'Identity');
+	c.header('Transfer-Encoding', 'chunked');
+
 	return streamText(c, async (stream) => {
 		try {
 			await stream.writeln('🚀 Starting Claude in the Box...🎁');
@@ -41,7 +44,7 @@ app.post('/api/tutorial/stream', async (c) => {
 			if (exists) {
 				stream.writeln('Checkout already exists continuing...');
 			} else {
-				stream.writeln('Checking out skill...');
+				stream.writeln(`Checking out Agent repository ${REPO_URL}...`);
 				await sandbox.gitCheckout(REPO_URL, {
 					targetDir: rootDir,
 				});

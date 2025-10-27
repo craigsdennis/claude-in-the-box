@@ -7,7 +7,10 @@
 	"name": "claude-in-the-box",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-10-22",
-	"compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
+	"compatibility_flags": [
+		"global_fetch_strictly_public",
+		"nodejs_compat"
+	],
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
 		"directory": "./public"
@@ -32,14 +35,18 @@
 	},
 	"migrations": [
 		{
-			"new_sqlite_classes": ["Sandbox"],
+			"new_sqlite_classes": [
+				"Sandbox"
+			],
 			"tag": "v1"
 		}
 	],
-	"kv_namespaces": [{
-		"binding": "RESULTS"
-	}]
-
+	"kv_namespaces": [
+		{
+			"binding": "RESULTS",
+			"id": "198e8c08894b44fd8237fbd0de31130b"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
