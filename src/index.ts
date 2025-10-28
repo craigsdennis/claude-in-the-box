@@ -34,7 +34,7 @@ app.post('/api/tutorial/stream', async (c) => {
 	// Help streaming in local dev
 	c.header('Content-Encoding', 'Identity');
 	c.header('Transfer-Encoding', 'chunked');
-
+	c.header('Content-Type', 'text/x-unknown');
 	return streamText(c, async (stream) => {
 		try {
 			await stream.writeln('🚀 Starting Claude in the Box...🎁');
