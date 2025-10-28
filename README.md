@@ -4,6 +4,8 @@
 
 This demo application shows using [Claude Agent](https://docs.claude.com/en/api/agent-sdk/overview) in a [Cloudflare Sandbox](https://sandbox.cloudflare.com)
 
+This example hosts the Anthropic repo [Tutorial Checker](https://github.com/craigsdennis/skill-tutorial-checker-anthropic)
+
 ## Develop
 
 Copy [.dev.vars.example](./.dev.vars.example) to `.dev.vars`
