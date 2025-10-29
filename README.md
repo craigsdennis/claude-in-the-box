@@ -23,7 +23,7 @@ npm run dev
 Upload your secrets
 
 ```bash
-npx wrangler secret bulk
+npx wrangler secret bulk <filename>
 ```
 
 ```bash
